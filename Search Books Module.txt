@@ -1,0 +1,128 @@
+void searchbooks()
+{
+system("cls");
+int d;
+printf("*****************************Search Books*********************************");
+gotoxy(20,10);
+printf("\xDB\xDB\xDB\xB2 1. Search By ID");
+gotoxy(20,14);
+printf("\xDB\xDB\xDB\xB2 2. Search By Name");
+gotoxy( 15,20);
+printf("Enter Your Choice");
+fp=fopen("Bibek.dat","rb+"); //open file for reading propose
+rewind(fp);   //move pointer at the begining of file
+switch(getch())
+{
+case '1':
+{
+system("cls");
+gotoxy(25,4);
+printf("****Search Books By Id****");
+gotoxy(20,5);
+printf("Enter the book id:");
+scanf("%d",&amp;d);
+gotoxy(20,7);
+printf("Searching........");
+while(fread(&amp;a,sizeof(a),1,fp)==1)
+{
+if(a.id==d)
+{
+Sleep(2);
+gotoxy(20,7);
+printf("The Book is available");
+gotoxy(20,8);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+gotoxy(20,9);
+printf("\xB2 ID:%d",a.id);gotoxy(47,9);printf("\xB2");
+gotoxy(20,10);
+printf("\xB2 Name:%s",a.name);gotoxy(47,10);printf("\xB2");
+gotoxy(20,11);
+printf("\xB2 Author:%s ",a.Author);gotoxy(47,11);printf("\xB2");
+gotoxy(20,12);
+printf("\xB2 Qantity:%d ",a.quantity);gotoxy(47,12);printf("\xB2"); gotoxy(47,11);printf("\xB2");
+gotoxy(20,13);
+printf("\xB2 Price:Rs.%.2f",a.Price);gotoxy(47,13);printf("\xB2");
+gotoxy(20,14);
+printf("\xB2 Rack No:%d ",a.rackno);gotoxy(47,14);printf("\xB2");
+gotoxy(20,15);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+findbook='t';
+}
+ 
+}
+if(findbook!='t')  //checks whether conditiion enters inside loop or not
+{
+gotoxy(20,8);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+gotoxy(20,9);printf("\xB2");  gotoxy(38,9);printf("\xB2");
+gotoxy(20,10);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+gotoxy(22,9);printf("\aNo Record Found");
+}
+gotoxy(20,17);
+printf("Try another search?(Y/N)");
+if(getch()=='y')
+searchbooks();
+else
+mainmenu();
+break;
+}
+case '2':
+{
+char s&#91;15];
+system("cls");
+gotoxy(25,4);
+printf("****Search Books By Name****");
+gotoxy(20,5);
+printf("Enter Book Name:");
+scanf("%s",s);
+int d=0;
+while(fread(&amp;a,sizeof(a),1,fp)==1)
+{
+if(strcmp(a.name,(s))==0) //checks whether a.name is equal to s or not
+{
+gotoxy(20,7);
+printf("The Book is available");
+gotoxy(20,8);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+gotoxy(20,9);
+printf("\xB2 ID:%d",a.id);gotoxy(47,9);printf("\xB2");
+gotoxy(20,10);
+printf("\xB2 Name:%s",a.name);gotoxy(47,10);printf("\xB2");
+gotoxy(20,11);
+printf("\xB2 Author:%s",a.Author);gotoxy(47,11);printf("\xB2");
+gotoxy(20,12);
+printf("\xB2 Qantity:%d",a.quantity);gotoxy(47,12);printf("\xB2");
+gotoxy(20,13);
+printf("\xB2 Price:Rs.%.2f",a.Price);gotoxy(47,13);printf("\xB2");
+gotoxy(20,14);
+printf("\xB2 Rack No:%d ",a.rackno);gotoxy(47,14);printf("\xB2");
+gotoxy(20,15);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+d++;
+}
+ 
+}
+if(d==0)
+{
+gotoxy(20,8);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+gotoxy(20,9);printf("\xB2");  gotoxy(38,9);printf("\xB2");
+gotoxy(20,10);
+printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+gotoxy(22,9);printf("\aNo Record Found");
+}
+gotoxy(20,17);
+printf("Try another search?(Y/N)");
+if(getch()=='y')
+searchbooks();
+else
+mainmenu();
+break;
+}
+default :
+getch();
+searchbooks();
+}
+fclose(fp);
+}
